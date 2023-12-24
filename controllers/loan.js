@@ -6,7 +6,7 @@ import ExpressError from '../utilities/express-error.js';
 export const requestNewLoan = async (req, res) => {
   const { user } = req;
   const { amount, duration } = req.body;
-  if (amount > 10 ** 6)
+  if (amount > 10 ** 5)
     throw new ExpressError('Maximum loan amount can be $1,000,000 only!', 400);
   const newLoan = new Loan({
     total_amount: amount,
