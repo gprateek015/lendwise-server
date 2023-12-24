@@ -22,6 +22,12 @@ mongoose.connect(process.env.DB_URI).then(
   err => console.log('Error connecting database ', err)
 );
 
+// Set Content-Security-Policy header
+app.use((req, res, next) => {
+  res.setHeader('Content-Security-Policy', 'upgrade-insecure-requests');
+  next();
+});
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
