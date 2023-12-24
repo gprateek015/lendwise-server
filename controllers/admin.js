@@ -29,7 +29,7 @@ export const fetchLoans = async (req, res) => {
         }
       }
     ]
-  });
+  }).populate('installments');
 
   res.status(200).json({
     success: true,
